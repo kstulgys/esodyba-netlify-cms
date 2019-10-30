@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <ThemeProvider>
       <CSSReset />
       <ColorModeProvider>
-        <Box bg="gray.200">
+        <Box>
           {children}
           <Footer />
         </Box>
