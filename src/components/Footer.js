@@ -17,15 +17,15 @@ const Footer = () => (
       <Text fontWeight="semibold" fontSize="4xl" mb="8">
         Susisiekite
       </Text>
-      <Flex justifyContent="space-between">
-        <Box width="48%">
-          <FormControl>
+      <Flex justifyContent={["initial", "space-between"]} flexDir={["column", "row"]}>
+        <Box width={["full", "48%"]}>
+          <FormControl mb={[8, 0]}>
             <FormLabel fontSize="sm" color="gray.600" htmlFor="name">
               Vardas
             </FormLabel>
             <Input
               height="12"
-              borderColor="gray.900"
+              borderColor="gray.500"
               border="2px"
               type="text"
               id="name"
@@ -33,19 +33,19 @@ const Footer = () => (
               bg="gray.100"
               _hover={{
                 border: "2px",
-                borderColor: "gray.900"
+                borderColor: "gray.500"
               }}
             />
           </FormControl>
         </Box>
-        <Box width="48%">
+        <Box width={["full", "48%"]}>
           <FormControl>
             <FormLabel fontSize="sm" color="gray.600" htmlFor="email">
               El. pastas
             </FormLabel>
             <Input
               height="12"
-              borderColor="gray.900"
+              borderColor="gray.500"
               border="2px"
               type="email"
               id="name"
@@ -53,7 +53,7 @@ const Footer = () => (
               bg="gray.100"
               _hover={{
                 border: "2px",
-                borderColor: "gray.900"
+                borderColor: "gray.500"
               }}
             />
           </FormControl>
@@ -64,7 +64,7 @@ const Footer = () => (
           Zinute
         </FormLabel>
         <Textarea
-          borderColor="gray.900"
+          borderColor="gray.500"
           border="2px"
           type="text"
           id="zinute"
@@ -72,7 +72,7 @@ const Footer = () => (
           bg="gray.100"
           _hover={{
             border: "2px",
-            borderColor: "gray.900"
+            borderColor: "gray.500"
           }}
         />
       </FormControl>
