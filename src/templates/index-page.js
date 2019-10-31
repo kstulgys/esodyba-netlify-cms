@@ -4,57 +4,72 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Features from "../components/Features"
 import BlogRoll from "../components/BlogRoll"
-import { Box, Text, Flex, Image, Grid, PseudoBox } from "@chakra-ui/core"
 import Container from "../components/Container"
 import Header from "../components/Header"
 import VideoBox from "../components/VideoBox"
-import { FiInstagram, FiFacebook, FiMail, FiMapPin, FiPhone } from "react-icons/fi"
 import GoogleMap from "../components/GMaps"
+import Footer from "../components/Footer"
+import { FiInstagram, FiFacebook, FiMail, FiMapPin, FiPhone } from "react-icons/fi"
+import { Box, Text, Flex, Image, Grid, PseudoBox, Badge, Stack } from "@chakra-ui/core"
+
+const ItemGrid = ({ intro, ...rest }) => (
+  <Grid
+    {...rest}
+    gridGap="6"
+    gridTemplateColumns={["repeat(auto-fill, minmax(280px, 1fr))", "repeat(auto-fill, minmax(350px, 1fr))"]}
+  >
+    {intro.blurbs.map(({ image, text }) => {
+      return (
+        <Box mt="2">
+          <PseudoBox
+            as="div"
+            overflow="hidden"
+            borderRadius="lg"
+            boxShadow="lg"
+            bg="white"
+            _hover={{ transform: "scale(1.025)", transition: "all 0.2s linear", boxShadow: "lg" }}
+          >
+            <Image objectFit="cover" width="full" height="64" src={image.childImageSharp.fluid.src} />
+          </PseudoBox>
+          <Text fontSize="2xl" mt="2" fontWeight="bold">
+            Namelio pavadinimas
+          </Text>
+          <Flex>
+            <Stack isInline>
+              <Badge variantColor="green">30 € /para</Badge>
+              <Badge variantColor="blue">max 10 zm</Badge>
+              <Badge variantColor="purple">6 lovos</Badge>
+            </Stack>
+          </Flex>
+        </Box>
+      )
+    })}
+  </Grid>
+)
+
+const PrimaryContent = ({ mainpitch, ...rest }) => (
+  <Flex {...rest} flexDir={["column", "row"]} mx={["-1rem", 0]}>
+    <Box width={["full", "50%"]} order={[2, 1]}>
+      <VideoBox />
+    </Box>
+    <Box width={["full", "50%"]} pl="6" pr={[4, 0]} order={[1, 2]} mb={[8, 0]}>
+      <Text fontSize="xl" fontWeight="semibold" mb="2">
+        {mainpitch.title}
+      </Text>
+      <Text>{mainpitch.description}</Text>
+    </Box>
+  </Flex>
+)
 
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro, helloworld }) => (
   <Box>
     <Header image={image.childImageSharp} title={title} subheading={subheading} />
     <Container minHeight="100vh">
-      <Flex pt={[8, 20]} flexDir={["column", "row"]} mx={["-1rem", 0]}>
-        <Box width={["full", "50%"]} order={[2, 1]}>
-          <VideoBox />
-        </Box>
-        <Box width={["full", "50%"]} pl="6" pr={[4, 0]} order={[1, 2]} mb={[8, 0]}>
-          <Text fontSize="xl" fontWeight="semibold" mb="2">
-            {mainpitch.title}
-          </Text>
-          <Text>{mainpitch.description}</Text>
-        </Box>
-      </Flex>
-      <Box mt="20">
-        <Grid
-          gridGap="6"
-          gridTemplateColumns={["repeat(auto-fill, minmax(280px, 1fr))", "repeat(auto-fill, minmax(350px, 1fr))"]}
-        >
-          {intro.blurbs.map(({ image, text }) => {
-            return (
-              <Box mt="2">
-                <PseudoBox
-                  as="div"
-                  overflow="hidden"
-                  borderRadius="lg"
-                  boxShadow="lg"
-                  bg="white"
-                  _hover={{ transform: "scale(1.025)", transition: "all 0.2s linear", boxShadow: "lg" }}
-                >
-                  <Image objectFit="cover" width="full" height="64" src={image.childImageSharp.fluid.src} />
-                </PseudoBox>
-                <Text fontSize="2xl" mt="2" fontWeight="bold">
-                  Namelio pavadinimas
-                </Text>
-                <Text fontWeight="medium">30 € /para | max 10 zm | 6 lovos</Text>
-              </Box>
-            )
-          })}
-        </Grid>
-      </Box>
+      <PrimaryContent py={[8, 24]} mainpitch={mainpitch} />
+      <ItemGrid pb={[8, 24]} intro={intro} />
     </Container>
     <GoogleMap />
+    <Footer py={[8, 24]} />
   </Box>
 )
 
