@@ -9,6 +9,7 @@ const Header = ({ image, title, subheading }) => (
     backgroundRepeat="no-repeat"
     backgroundSize="cover"
     position="relative"
+    backgroundAttachment="fixed"
   >
     <Flex flex="1" justify="center" align="center" flexDir="column">
       <Text
