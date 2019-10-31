@@ -2,9 +2,9 @@ import React from "react"
 import { Box, Text, Flex } from "@chakra-ui/core"
 
 const VideoBox = props => (
-  <Box {...props} overflow="hidden" pt="56.25%" position="relative">
+  <Box {...props} overflow="hidden" pt="56.25%" position="relative" boxShadow="lg">
     <Box
-      borderRadius="md"
+      borderRadius={["none", "lg"]}
       border="0"
       left=" 0"
       position="absolute"

@@ -2,7 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import { Box, Text, Flex, FormLabel, Input, FormHelperText, FormControl, Textarea, Button, Icon } from "@chakra-ui/core"
 import Container from "./Container"
-import { FaFacebookSquare, FaPaperPlane, FaRegEnvelope, FaInstagram } from "react-icons/fa"
+// import { FaFacebookSquare, FaPaperPlane, FaRegEnvelope, FaInstagram } from "react-icons/fa"
+import { FiSend } from "react-icons/fi"
+
 // import logo from "../img/logo.svg"
 // import facebook from "../img/social/facebook.svg"
 // import instagram from "../img/social/instagram.svg"
@@ -12,53 +14,87 @@ import { FaFacebookSquare, FaPaperPlane, FaRegEnvelope, FaInstagram } from "reac
 const Footer = () => (
   <Box as="footer" py="20">
     <Container>
-      <Flex flexDir={["column", "row"]}>
-        <Flex flexDir="column" width={["full", "50%"]} pr={["0", "8"]}>
-          <Text fontWeight="black" fontSize="xl" textTransform="uppercase" mb="8">
-            Kontaktai
-          </Text>
-          <Box>
-            <ContactItem title="Nuomotoja" text="Roma Stulgiene" />
-            <ContactItem title="Tel. nr." text="+370 111 111 11" />
-            <ContactItem title="El. pastas" text="e.sodyba@gmail.com" />
-            <ContactItem title="Saskaitos nr." text="LT 000 000 000" />
-            <ContactItem title="Adresas" text="Samanio g.12, Sadziunu k., Veisieju sen., Lazdiju r.sav." />
-          </Box>
-          <Flex alignItems="center" mt="auto">
-            <Box as={FaFacebookSquare} size="40px" />
-            <Box as={FaInstagram} size="42px" mx="4" />
-            <Box as={FaRegEnvelope} size="45px" />
-          </Flex>
-        </Flex>
-        <Box width={["full", "50%"]} mt={[8, 0]}>
-          <Text fontWeight="black" fontSize="xl" textTransform="uppercase" mb="8">
-            Susisiekite
-          </Text>
-          <InputBox label="Vardas" type="text" input="input" />
-          <InputBox label="El. pastas" type="email" input="input" />
-          <InputBox label="Zinute" type="text" />
-
-          <Button
-            leftIcon={FaPaperPlane}
-            borderColor="gray.900"
-            border="2px"
-            // color="white"
-            // variantColor="dark"
-            // variant="solid"
-            height="12"
-            fontWeight="bold"
-            textTransform="uppercase"
-            width="full"
-            _hover={{
-              border: "none",
-              bg: "gray.900",
-              color: "white"
-            }}
-          >
-            Siusti
-          </Button>
+      <Text fontWeight="semibold" fontSize="4xl" mb="8">
+        Susisiekite
+      </Text>
+      <Flex justifyContent="space-between">
+        <Box width="48%">
+          <FormControl>
+            <FormLabel fontSize="sm" color="gray.600" htmlFor="name">
+              Vardas
+            </FormLabel>
+            <Input
+              height="12"
+              borderColor="gray.900"
+              border="2px"
+              type="text"
+              id="name"
+              aria-describedby={`name-helper-text`}
+              bg="gray.100"
+              _hover={{
+                border: "2px",
+                borderColor: "gray.900"
+              }}
+            />
+          </FormControl>
+        </Box>
+        <Box width="48%">
+          <FormControl>
+            <FormLabel fontSize="sm" color="gray.600" htmlFor="email">
+              El. pastas
+            </FormLabel>
+            <Input
+              height="12"
+              borderColor="gray.900"
+              border="2px"
+              type="email"
+              id="name"
+              aria-describedby={`email-helper-text`}
+              bg="gray.100"
+              _hover={{
+                border: "2px",
+                borderColor: "gray.900"
+              }}
+            />
+          </FormControl>
         </Box>
       </Flex>
+      <FormControl mt="8">
+        <FormLabel fontSize="sm" color="gray.600" htmlFor="zinute">
+          Zinute
+        </FormLabel>
+        <Textarea
+          borderColor="gray.900"
+          border="2px"
+          type="text"
+          id="zinute"
+          aria-describedby={`zinute-helper-text`}
+          bg="gray.100"
+          _hover={{
+            border: "2px",
+            borderColor: "gray.900"
+          }}
+        />
+      </FormControl>
+      <Button
+        mt="8"
+        leftIcon={FiSend}
+        border="none"
+        bg="gray.900"
+        color="white"
+        height="12"
+        fontWeight="black"
+        textTransform="uppercase"
+        width={["full", "25%"]}
+        _hover={{
+          borderColor: "gray.900",
+          border: "2px",
+          bg: "gray.100",
+          color: "gray.900"
+        }}
+      >
+        Siusti
+      </Button>
     </Container>
   </Box>
 )
